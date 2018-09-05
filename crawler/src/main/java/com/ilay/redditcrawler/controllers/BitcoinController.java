@@ -1,7 +1,7 @@
 package com.ilay.redditcrawler.controllers;
 
 import com.ilay.redditcrawler.dao.BitcoinCurrencyRateRepository;
-import com.ilay.redditcrawler.models.BitcoinCurrencyRate;
+import com.ilay.redditcrawler.models.BitCoinCurrencyRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +14,7 @@ public class BitcoinController {
     private BitcoinCurrencyRateRepository bitcoinRepository;
 
     @GetMapping("/rates")
-    public List<BitcoinCurrencyRate> getRates() {
-        return (List<BitcoinCurrencyRate>) bitcoinRepository.findAll();
+    public List<BitCoinCurrencyRate> getRates() {
+        return (List<BitCoinCurrencyRate>) bitcoinRepository.findAll();
     }
 }

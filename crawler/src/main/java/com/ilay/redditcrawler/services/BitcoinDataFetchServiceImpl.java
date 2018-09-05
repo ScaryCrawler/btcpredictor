@@ -1,13 +1,13 @@
 package com.ilay.redditcrawler.services;
 
 import com.ilay.redditcrawler.dao.BitcoinCurrencyRateRepository;
-import com.ilay.redditcrawler.models.BitcoinCurrencyRate;
+import com.ilay.redditcrawler.models.BitCoinCurrencyRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
+import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 
 @Service
@@ -27,10 +27,11 @@ public class BitcoinDataFetchServiceImpl implements BitcoinDataFetchService {
 
         LinkedHashMap usdRates = (LinkedHashMap) ((LinkedHashMap) currencyRate).get("USD");
 
-        BitcoinCurrencyRate bitcoinCurrencyRate = BitcoinCurrencyRate.builder()
+        BitCoinCurrencyRate bitcoinCurrencyRate = BitCoinCurrencyRate.builder()
                 .code("USD")
                 .sell((Double) usdRates.get("sell"))
                 .buy((Double) usdRates.get("buy"))
+                .time(LocalDateTime.now().minusMinutes(15))
                 .build();
         rateRepository.save(bitcoinCurrencyRate);
     }

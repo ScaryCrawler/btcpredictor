@@ -2,16 +2,11 @@ package com.ilay.redditcrawler.models;
 
 
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 @Data
-@Entity
 public class Currency {
     @Id
-    @GeneratedValue
     private int id;
 
     private String code;

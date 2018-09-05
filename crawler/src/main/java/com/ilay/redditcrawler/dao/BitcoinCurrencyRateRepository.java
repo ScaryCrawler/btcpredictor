@@ -1,9 +1,7 @@
 package com.ilay.redditcrawler.dao;
 
-import com.ilay.redditcrawler.models.BitcoinCurrencyRate;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import com.ilay.redditcrawler.models.BitCoinCurrencyRate;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface BitcoinCurrencyRateRepository extends
-        CrudRepository<BitcoinCurrencyRate, Integer> {
+public interface BitcoinCurrencyRateRepository extends MongoRepository<BitCoinCurrencyRate, String> {
 }
