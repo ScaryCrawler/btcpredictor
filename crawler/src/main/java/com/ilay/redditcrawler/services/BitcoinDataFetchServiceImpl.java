@@ -20,7 +20,7 @@ public class BitcoinDataFetchServiceImpl implements BitcoinDataFetchService {
     private RestTemplate restTemplate;
 
     @Override
-    @Scheduled(fixedRate = 4000)
+    @Scheduled(fixedRate = 1000)
     public void fetchData() {
         Object currencyRate = restTemplate.getForObject("https://blockchain.info/ticker",
                 Object.class);
