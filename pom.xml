@@ -10,8 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>discovery-server</module>
         <module>crawler</module>
-        <module>consumer</module>
+        <module>webapp</module>
     </modules>
 
 
