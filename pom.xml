@@ -13,6 +13,7 @@
         <module>discovery-server</module>
         <module>crawler</module>
         <module>webapp</module>
+        <module>ml-module</module>
     </modules>
 
 
