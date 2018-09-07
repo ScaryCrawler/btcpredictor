@@ -1,7 +1,7 @@
 package com.db.mlmodule.services;
 
-import com.mongodb.spark.MongoSpark;
 import com.db.mlmodule.models.BitCoinCurrencyRate;
+import com.mongodb.spark.MongoSpark;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;

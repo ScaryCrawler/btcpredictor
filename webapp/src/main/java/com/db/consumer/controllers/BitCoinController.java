@@ -11,16 +11,17 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-public class BitcoinController {
-//    @Autowired
-//    @LoadBalanced
-//    private RestTemplate restTemplate;
-
+public class BitCoinController {
     @Autowired
     private BitCoinCurrencyRepository bitCoinCurrencyRepository;
 
     @GetMapping("/rates")
     public List<BitCoinCurrencyRate> getAllRates() {
         return bitCoinCurrencyRepository.findAll();
+    }
+
+    @GetMapping("/todayRates")
+    public List<BitCoinCurrencyRate> getTodayRates() {
+        return bitCoinCurrencyRepository.getTodayRates();
     }
 }

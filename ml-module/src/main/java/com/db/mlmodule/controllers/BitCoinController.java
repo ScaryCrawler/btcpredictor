@@ -13,7 +13,7 @@ public class BitCoinController {
     @Autowired
     private MlService mlService;
 
-    @GetMapping("/rawRates")
+    @GetMapping("/predictedRates")
     public List<BitCoinCurrencyRate> getAllRates() {
         return mlService.fitModel();
     }

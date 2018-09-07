@@ -1,5 +1,5 @@
 package com.ilay.redditcrawler.services;
 
-public interface BitcoinDataFetchService {
+public interface BitCoinDataFetchService {
     void fetchData();
 }

@@ -10,9 +10,6 @@ import java.time.LocalDateTime;
 
 @Data
 public class BitCoinCurrencyRate implements Serializable {
-//    @Id
-//    private String _id;
-
     private double buy;
     private double sell;
 
