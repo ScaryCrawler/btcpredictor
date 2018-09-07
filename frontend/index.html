@@ -6,18 +6,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="lastDay">
+<div>
+    <h1 class="header">
+        BitCoin Currency Rate
+    </h1>
+</div>
+<div id="lastDay" class="buttonContainer">
     <input name="updateButton"
            type="button"
            value="Get last day data"
-           onclick="updateChart()" />
+           onclick="updateChart()"
+           class="button"/>
     <input name="updateButton"
            type="button"
            value="Get last hour data"
-           onclick="updateChartByLastHour()" />
+           onclick="updateChartByLastHour()"
+           class="button"/>
+    <input name="updateButton"
+           type="button"
+           value="Get last five minutes data"
+           onclick="updateChartByLastFiveMinutes()"
+           class="button"/>
 </div>
-<svg width="1280" height="700"></svg>
+<div style="text-align: center">
+    <svg width="1280" height="600"></svg>
+</div>
 <script>
-    renderChart();
+    renderChart("http://javaschool:8081/rates");
 </script>
 </body>

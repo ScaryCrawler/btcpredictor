@@ -1,18 +1,41 @@
 path {
-    stroke: steelblue;
-    stroke-width: 2;
+    stroke: black;
+    stroke-width: 3px;
     fill: none;
 }
 
 .line {
-    stroke: coral;
+    stroke: steelblue;
     stroke-width: 2px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-.axis path,
-.axis line {
-    fill: none;
-    stroke: grey;
-    stroke-width: 1;
-    shape-rendering: crispEdges;
+.axis.y {
+    fill: darkgoldenrod;
+    transform: rotate(-90deg);
+    text-anchor: end;
+    font-size: 12px;
+}
+
+.axisLines {
+    fill: darkgoldenrod;
+}
+
+.header {
+    color: cadetblue;
+    text-align: center;
+}
+
+.button {
+    border-radius: 4px;
+    background-color: #008CBA;
+    color: white;
+    padding: 15px 32px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.buttonContainer {
+    text-align: center;
 }
