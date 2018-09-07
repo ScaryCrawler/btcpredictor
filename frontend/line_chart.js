@@ -6,6 +6,8 @@ var renderChart = function (apiUrl) {
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var parseTime = d3.utcParse("%Y-%m-%dT%H:%M:%S.%L");
+    var timeFormat = d3.timeFormat("%X");
+    var numberFormat = d3.format(".2f");
 
     var x = d3.scaleTime()
         .rangeRound([0, width]);
@@ -20,6 +22,10 @@ var renderChart = function (apiUrl) {
         .y(function (d) {
             return y(d.buy);
         });
+
+    var div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
     d3.json(apiUrl, function (error, data) {
         if (error) throw error;
@@ -56,6 +62,29 @@ var renderChart = function (apiUrl) {
             .datum(data)
             .attr("class", "line")
             .attr("d", line);
+
+        g.selectAll("dot")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("class", "dot")
+            .attr("r", 3)
+            .attr("cx", function(d) { return x(d.time); })
+            .attr("cy", function(d) { return y(d.buy); })
+            .on("mouseover", function (d) {
+                console.log(d);
+                div.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                div.html(timeFormat(d.time) + "<br/>" + numberFormat(d.buy))
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
     });
 };
 
@@ -72,4 +101,9 @@ var updateChartByLastHour = function () {
 var updateChartByLastFiveMinutes = function () {
     d3.selectAll("g").remove();
     renderChart("http://javaschool:8081/lastFiveMinutesRates");
+};
+
+var updateChartByLastMinute = function () {
+    d3.selectAll("g").remove();
+    renderChart("http://javaschool:8081/lastMinuteRates");
 };
