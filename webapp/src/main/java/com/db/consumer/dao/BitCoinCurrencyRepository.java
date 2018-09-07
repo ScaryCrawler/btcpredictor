@@ -15,4 +15,11 @@ public interface BitCoinCurrencyRepository extends MongoRepository<BitCoinCurren
                 .filter(x -> x.getTime().isAfter(LocalDateTime.now().minusDays(1)))
                 .collect(Collectors.toList());
     }
+
+    default List<BitCoinCurrencyRate> getLashHourRates() {
+        return this.findAll()
+                .stream()
+                .filter(x -> x.getTime().isAfter(LocalDateTime.now().minusHours(1)))
+                .collect(Collectors.toList());
+    }
 }

@@ -24,4 +24,9 @@ public class BitCoinController {
     public List<BitCoinCurrencyRate> getTodayRates() {
         return bitCoinCurrencyRepository.getTodayRates();
     }
+
+    @GetMapping("/lasHourRates")
+    public List<BitCoinCurrencyRate> getLastHourRates() {
+        return bitCoinCurrencyRepository.getLashHourRates();
+    }
 }
