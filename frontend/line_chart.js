@@ -29,6 +29,9 @@ var renderChart = function (apiUrl) {
 
     d3.json(apiUrl, function (error, data) {
         if (error) throw error;
+        if(data.length === 0) {
+            alert("There is no data for selected period");
+        }
         data.forEach(function (d) {
             d.time = parseTime(d.time);
             d.buy = +d.buy;

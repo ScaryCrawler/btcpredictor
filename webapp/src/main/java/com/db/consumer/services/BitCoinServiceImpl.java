@@ -10,6 +10,8 @@ import java.util.List;
 
 @Service
 public class BitCoinServiceImpl implements BitCoinService {
+    private static final int CRAWLED_DATA_DELAY = 15;
+
     @Autowired
     private BitCoinCurrencyRepository bitCoinCurrencyRepository;
 
@@ -30,11 +32,11 @@ public class BitCoinServiceImpl implements BitCoinService {
 
     @Override
     public List<BitCoinCurrencyRate> getLastFiveMinutesRates() {
-        return bitCoinCurrencyRepository.findByTimeAfterOrderByTime(LocalDateTime.now().minusMinutes(20));
+        return bitCoinCurrencyRepository.findByTimeAfterOrderByTime(LocalDateTime.now().minusMinutes(5 + CRAWLED_DATA_DELAY));
     }
 
     @Override
     public List<BitCoinCurrencyRate> getLastMinuteRates() {
-        return bitCoinCurrencyRepository.findByTimeAfterOrderByTime(LocalDateTime.now().minusMinutes(16));
+        return bitCoinCurrencyRepository.findByTimeAfterOrderByTime(LocalDateTime.now().minusMinutes(1 + CRAWLED_DATA_DELAY));
     }
 }
